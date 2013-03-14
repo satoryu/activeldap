@@ -70,6 +70,7 @@ module ActiveLdap
             :filter => filter,
             :attributes => attrs,
             :size => limit,
+            :paged_searches_supported => paged_searches_supported?
           }
           info = {
             :base => base, :scope => scope_name(scope),
@@ -272,6 +273,12 @@ module ActiveLdap
           nonce << CHARS[rand(CHARS.size)]
         end
         nonce
+      end
+
+      def paged_searches_supported?
+        ldap = Net::LDAP.new
+        ldap.instance_variable_set(:@open_connection, @connection)
+        ldap.paged_searches_supported?
       end
 
       def simple_bind(bind_dn, options={})
