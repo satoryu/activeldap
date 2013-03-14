@@ -1,0 +1,15 @@
+# -*- ruby -*-
+
+source "http://rubygems.org"
+
+gemspec
+
+group :test do
+  gem "net-ldap", git: 'https://github.com/ruby-ldap/ruby-net-ldap.git', branch: 'master'
+  platforms :mri_18, :mri_19 do
+    gem "ruby-ldap"
+  end
+  platforms :jruby do
+    gem "jruby-openssl"
+  end
+end

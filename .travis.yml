@@ -6,6 +6,9 @@ rvm:
 #  - ruby-head
 env:
   - JRUBY_OPTS="-Xcext.enabled=true"
+gemfile: 
+  - ./Gemfile
+  - ./Gemfile.net-ldap-0.4.0
 notifications:
   recipients:
     - kou@cozmixng.org
