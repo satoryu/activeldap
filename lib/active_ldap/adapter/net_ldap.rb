@@ -146,6 +146,7 @@ module ActiveLdap
             raise ConnectionError, "#{$!.class}: #{$!.message}"
           end
         end
+        result = result.result_code
         message = nil
         if result.is_a?(Hash)
           message = result[:errorMessage]
